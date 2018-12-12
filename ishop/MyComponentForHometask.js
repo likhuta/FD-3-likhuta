@@ -21,8 +21,8 @@ var MyComponentForHometask = React.createClass({
     {key:v.code, name:v.name, cost:v.cost, count:v.count}));
 
     return React.DOM.div( {className:'MyComponentFrame'}, 
-      React.DOM.h1( {className:'MyComponentText'}, this.props.nameShop ),
-      React.DOM.div( {className:'MyComponentText'}, allInfo ),
+      React.DOM.p( {className:'MyNameShop'}, this.props.nameShop ),
+      React.DOM.div( {className:'PositionOfProduct'}, allInfo ),
     );
   },
 

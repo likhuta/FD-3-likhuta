@@ -1,11 +1,17 @@
 .MyComponentFrame
 {
-  border: double gray 3px;
-  padding: 3px 7px;
+  border: solid gray 3px;
+  padding: 5px;
   background-color: #F0F0F0;
 }
 
-.MyComponentText
+.MyNameShop
 {
-  font-style: italic;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 150%;
+  color: magenta;
+  font-weight: bold;
+  text-align: center;
+
 }
+

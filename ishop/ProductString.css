@@ -1,0 +1,22 @@
+.PositionOfProduct
+{
+  border: solid 2px black;
+  margin: 3px;
+  padding: 5px;
+}
+
+.ImageOfProduct
+{
+  margin-bottom: 3px;
+}
+
+.Discription{
+  font-size: 110%;
+  color:blue;
+}
+
+.InfoAboutProduct{
+font-weight: bold;
+font-size: 125%;
+
+}
