@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Проба React</title>
+</head> 
+<body> 
+  <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="MyComponentForHometask.js"></script>
+  <script src="ProductString.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="MyComponentForHometask.css" />
+
+  <script>
+//Math.floor(Math.random() * (max - min)) + min
+
+    var nameShopStr='MegaGiperShop';
+    var productArr=[
+     { name:'watch  ', cost:'120$  ', count:5,code:1},
+    {  name:'ski  ', cost:'100$  ', count:2, code:2}, 
+
+    ]
+
+    ReactDOM.render(
+      React.createElement(MyComponentForHometask,{product:productArr, nameShop:nameShopStr}), 
+      document.getElementById('container') 
+    );
+
+  </script>
+
+</body> 
+</html>
