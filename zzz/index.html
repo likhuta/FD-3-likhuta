@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Голосование</title>
+</head> 
+<body> 
+  <div id="container"></div> 
+      
+      
+  <script>
+// функция, чтобы отсортировать массив
+// найти совпадение по введенному символу
+    var answersArr=[
+      'кровать', 'стол','окно','картина','стена','кабинет' 
+    ];
+    var useSortAbc=true;
+
+    var selectInfo= prompt('What find?');
+    //var selectInfo= 'What find?';
+
+/*
+    var sortArr= answersArr.filter(item=>{
+      if (item.indexOf(selectInfo)!=-1 ){
+        return item;
+      }
+
+    });
+      console.log(sortArr);
+
+if(useSortAbc){
+  var byAbcArray=sortArr;
+
+  byAbcArray.sort(abcFunction);
+  console.log('-byAbcArray-', byAbcArray )
+}
+
+    console.log(selectInfo)
+*/
+
+var abcFunction=(a,b)=>{
+  if(a>b){
+    return 1;
+  }
+  if(a<b){
+    return -1
+  }
+}
+
+console.log(doFiltr(answersArr,selectInfo,useSortAbc));
+
+function doFiltr(arr,selectInfo,useSortAbc){
+// to selectInfo
+var sortArr=[];
+//console.log(arr);
+
+if(selectInfo==''){
+  sortArr=arr;
+  console.log(sortArr);
+}
+else if  (selectInfo!='') {
+  sortArr = answersArr.filter(item=>{
+      if (item.indexOf(selectInfo)!=-1 ){
+        return item;
+      }
+
+    });
+};
+ 
+  if(useSortAbc==true){
+  sortArr.sort(abcFunction);
+  console.log('sortArr');
+
+}
+return sortArr;
+
+}
+  
+  
+
+  </script>
+
+  <form>
+ 
+    <textarea rows="10" id="pastText">    </textarea>
+
+  </form>
+
+</body> 
+</html>
