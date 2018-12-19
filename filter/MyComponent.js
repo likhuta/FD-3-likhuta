@@ -28,79 +28,72 @@ var Block=React.createClass({
     }
   },
 
-  doSortArrAbc: function(){
-    if(this.state.stayToAbc){
-      this.setState({stayToAbc:false})
-    }
-    else{
-      this.setState({stayToAbc:true});
-   //  var prevArr=this.state.filtrArr;
-   //  this.setState({filtrArr:prevArr.sort(this.abcFunction)})
-    }
+
+  doSortArrAbc: function(EO){
+
+      this.setState({stayToAbc:EO.target.checked, filtrArr:this.props.dictionary },  this.toMakeFilter  );
+console.log(1);
   },
 
-  knowSelectStr:function(EO){
-    this.setState({selectStr:EO.target.value});
-    this.toMakeFilter();
-  }, 
+  knowSelectStr: function(EO){
+    this.setState({selectStr:EO.target.value}, this.toMakeFilter);
+    console.log(2);
+
+ }, 
+
+  aaa: function(){
+    console.log(this.state.stayToAbc);
+  },
 
   toMakeFilter:function(){
-    /*
-    var sortArr = this.props.dictionary.filter(item=>{
-      if (item.indexOf(this.state.selectStr)!=-1 || selectStr=='' ){
-        return item;
-      }
-    });
-*/
-var sortArr=[];
-//console.log(arr);
+   var sortArr=[];
+   console.log(3);
+   console.log(this.state.filtrArr);
+   console.log(this.props.dictionary );
 
-if(this.state.selectStr==''){
- // console.log(sortArr);
- this.setState({filtrArr:sortArr});
+   if(this.state.selectStr==''){
+    sortArr=this.props.dictionary;
+    console.log(this.props.dictionary );
 
-}
-else if  (this.state.selectStr!='') {
-  sortArr = this.props.dictionary.filter(item=>{
-      if (item.indexOf(this.state.selectStr)!=-1 ){
-        return item;
-      }
+    }
+   else if  (this.state.selectStr!='') {
+       sortArr = this.props.dictionary.filter(item=>{
+           if (item.indexOf(this.state.selectStr)!=-1  ){
+           return item;
+            }
 
-    });
-};
+      });
+console.log(this.state.filtrArr);
+
+   };
 
     if(this.state.stayToAbc){
     sortArr.sort(this.abcFunction);
-    }
-    console.log('-sortArr-',sortArr)
+    console.log('sort');
 
-    this.setState({filtrArr:sortArr});
+    }
+    else{
+      console.log('haa');
+    };
+
+    this.setState({filtrArr:sortArr} );
+
   },
 
   render: function(){
-
- console.log(this.state.filtrArr)
+    this.aaa();
     var answersCode = this.state.filtrArr.map(item=>
-      React.createElement(ShowList,{key:item, text:item})
+      React.createElement(ShowList,{key:item.toString(), text:item})
       );
+      console.log('-------------end--------')
 
     return React.DOM.div({},
       React.DOM.input({type:'checkbox', onClick:this.doSortArrAbc}),
       React.DOM.input({type:'text', onChange:this.knowSelectStr }),
       React.DOM.div({},answersCode )
-     
-
       );
     
 
   },
-
-// отобразить список
-
-
-
-
-
-
 
 })
