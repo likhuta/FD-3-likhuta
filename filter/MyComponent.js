@@ -30,62 +30,41 @@ var Block=React.createClass({
 
 
   doSortArrAbc: function(EO){
-
-      this.setState({stayToAbc:EO.target.checked, filtrArr:this.props.dictionary },  this.toMakeFilter  );
-console.log(1);
+      this.setState({stayToAbc:EO.target.checked},  this.toMakeFilter  );
   },
 
   knowSelectStr: function(EO){
     this.setState({selectStr:EO.target.value}, this.toMakeFilter);
-    console.log(2);
 
  }, 
 
-  aaa: function(){
-    console.log(this.state.stayToAbc);
-  },
+ 
 
   toMakeFilter:function(){
    var sortArr=[];
-   console.log(3);
-   console.log(this.state.filtrArr);
-   console.log(this.props.dictionary );
 
    if(this.state.selectStr==''){
-    sortArr=this.props.dictionary;
-    console.log(this.props.dictionary );
-
+    sortArr=this.props.dictionary.slice();
     }
    else if  (this.state.selectStr!='') {
        sortArr = this.props.dictionary.filter(item=>{
            if (item.indexOf(this.state.selectStr)!=-1  ){
            return item;
             }
-
       });
-console.log(this.state.filtrArr);
 
    };
 
     if(this.state.stayToAbc){
     sortArr.sort(this.abcFunction);
-    console.log('sort');
-
     }
-    else{
-      console.log('haa');
-    };
-
     this.setState({filtrArr:sortArr} );
-
   },
 
   render: function(){
-    this.aaa();
     var answersCode = this.state.filtrArr.map(item=>
       React.createElement(ShowList,{key:item.toString(), text:item})
       );
-      console.log('-------------end--------')
 
     return React.DOM.div({},
       React.DOM.input({type:'checkbox', onClick:this.doSortArrAbc}),
