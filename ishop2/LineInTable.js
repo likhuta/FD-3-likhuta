@@ -9,15 +9,6 @@ var LineInTable= React.createClass({
         URL: React.PropTypes.string.isRequired,
         quantity: React.PropTypes.string.isRequired,
         control: React.PropTypes.string,
-      
-/*
-    name:this.props.name,
-    price:this.props.price,
-    URL:this.props.URL,
-    quantity:this.quantity,
-    control:this.props.control,
-
-*/
   },
 
   render: function(){
@@ -34,12 +25,7 @@ var LineInTable= React.createClass({
           :React.DOM.span({}, this.props.control)
           ),
 
-
-
        )
- 
-      
-
     )
 
   },

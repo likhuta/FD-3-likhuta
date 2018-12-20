@@ -1,6 +1,6 @@
 
-var Product1= React.createClass({
-  displayName:'Product1',
+var Product= React.createClass({
+  displayName:'Product',
 
   propTypes: {
     name: React.PropTypes.string.isRequired,

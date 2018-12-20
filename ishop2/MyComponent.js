@@ -29,26 +29,21 @@ var MyComponent=React.createClass({
     return {
       isCheckNow:null,
       isDelete:[],
-      
     };
   },
 
   checkLineTable: function(cod){
-    console.log('checkLineTable'+cod);
     this.setState({isCheckNow:cod});
   },
 
   deleteLineTable:function(cod){
-
     var abc=this.state.isDelete;
     //    var abc=this.state.isDelete.push(cod);
     abc.push(cod);
     if(this.askUser()){
       this.setState({isDelete:abc});
-      console.log('deleteLineTable -My component ')
     }
     else{
-      console.log('NOT deleteLineTable -My component ')
       return;
     }
 
@@ -61,6 +56,16 @@ var MyComponent=React.createClass({
 
   render: function(){
 
+    var answerCode=this.props.infoForTable.map(item =>
+      React.createElement(Product,{
+        key:item.cod, name:item.name, price:item.price, URL:item.URL,
+        quantity:item.quantity, control:item.control, isDelete:this.state.isDelete,
+        isCheckNow:this.state.isCheckNow, cod:item.cod, cbCheckLineTable:this.checkLineTable,
+        cbDeleteLineTable:this.deleteLineTable,     
+      }
+        )
+      );
+
     return React.DOM.div({},
      
       React.DOM.table({},
@@ -70,51 +75,10 @@ var MyComponent=React.createClass({
           URL:this.props.titleOfTable[0].URL,
           quantity:this.props.titleOfTable[0].quantity,
           control:this.props.titleOfTable[0].control,
-          
         }),
-        React.createElement(Product1,{
-          name:this.props.infoForTable[0].name,
-          price:this.props.infoForTable[0].price,
-          URL:this.props.infoForTable[0].URL,
-          quantity:this.props.infoForTable[0].quantity,
-          control:this.props.infoForTable[0].control,
-          isDelete:this.state.isDelete,
-          isCheckNow:this.state.isCheckNow,
-          cod:this.props.infoForTable[0].cod,
-          cbCheckLineTable:this.checkLineTable,
-          cbDeleteLineTable:this.deleteLineTable,
-        }),
-        React.createElement(Product2,{
-          name:this.props.infoForTable[1].name,
-          price:this.props.infoForTable[1].price,
-          URL:this.props.infoForTable[1].URL,
-          quantity:this.props.infoForTable[1].quantity,
-          control:this.props.infoForTable[1].control,
-          isDelete:this.state.isDelete,
-          isCheckNow:this.state.isCheckNow,
-          cod:this.props.infoForTable[1].cod,
-          cbCheckLineTable:this.checkLineTable,
-          cbDeleteLineTable:this.deleteLineTable,
+        answerCode,
 
-        }),
-        React.createElement(Product2,{
-          name:this.props.infoForTable[2].name,
-          price:this.props.infoForTable[2].price,
-          URL:this.props.infoForTable[2].URL,
-          quantity:this.props.infoForTable[2].quantity,
-          control:this.props.infoForTable[2].control,
-          isDelete:this.state.isDelete,
-          isCheckNow:this.state.isCheckNow,
-          cod:this.props.infoForTable[2].cod,
-          cbCheckLineTable:this.checkLineTable,
-          cbDeleteLineTable:this.deleteLineTable,
-  
-
-        }),
-
-      )
-
-
+      ),
     )
 
   },
