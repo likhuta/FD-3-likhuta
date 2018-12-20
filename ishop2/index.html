@@ -1,0 +1,50 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>ishop2</title>
+</head> 
+<body> 
+  <div id="root"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
+  <script src="MyComponent.js"></script>
+  <script src="LineInTable.js"></script>
+  <script src="Product1.js"></script>
+  <script src="Product2.js"></script>
+  <script src="Product3.js"></script>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="MyComponent.css" />
+
+
+  <script>
+    var titleOfTable=[
+      {name:'name', price:'Prise', URL:'URL',quantity:'Quantity', control:'Control' },
+
+    ]
+    var infoForTable
+    =[
+      {name:'product1', price:30, URL:'www.ha-ha',quantity:20, control:true,cod:1,},
+      {name:'product2', price:40, URL:'www.hadfdsf-ha',quantity:30, control:true, cod:2},
+      {name:'product3', price:50, URL:'www.hgfdgfga',quantity:40, control:true, cod:3}
+
+    ]
+    
+
+    ReactDOM.render(
+      React.createElement(MyComponent,{
+        infoForTable:infoForTable,
+        titleOfTable:titleOfTable
+      }), 
+      document.getElementById('root') 
+    );
+
+  </script>
+
+</body> 
+</html>

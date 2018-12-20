@@ -35,7 +35,6 @@ var Block=React.createClass({
 
   knowSelectStr: function(EO){
     this.setState({selectStr:EO.target.value}, this.toMakeFilter);
-
  }, 
 
  
