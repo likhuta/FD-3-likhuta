@@ -29,6 +29,7 @@ var MyComponent=React.createClass({
     return {
       isCheckNow:null,
       isDelete:[],
+      arrToShow:JSON.parse(JSON.stringify(infoForTable)),
     };
   },
 
@@ -37,11 +38,9 @@ var MyComponent=React.createClass({
   },
 
   deleteLineTable:function(cod){
-    var abc=this.state.isDelete;
-    //    var abc=this.state.isDelete.push(cod);
-    abc.push(cod);
+
     if(this.askUser()){
-      this.setState({isDelete:abc});
+      this.setState({arrToShow:this.state.arrToShow.filter(item=> item.cod!=cod)}, );
     }
     else{
       return;
@@ -54,9 +53,14 @@ var MyComponent=React.createClass({
     return answer;
   },
 
+  deleteLineInArr(cod){
+      console.log(newArrForToShow);
+
+  },
+
   render: function(){
 
-    var answerCode=this.props.infoForTable.map(item =>
+    var answerCode=this.state.arrToShow.map(item =>
       React.createElement(Product,{
         key:item.cod, name:item.name, price:item.price, URL:item.URL,
         quantity:item.quantity, control:item.control, isDelete:this.state.isDelete,
