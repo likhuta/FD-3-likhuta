@@ -28,7 +28,6 @@ var MyComponent=React.createClass({
   getInitialState: function() {
     return {
       isCheckNow:null,
-      isDelete:[],
       arrToShow:JSON.parse(JSON.stringify(infoForTable)),
     };
   },
@@ -63,8 +62,8 @@ var MyComponent=React.createClass({
     var answerCode=this.state.arrToShow.map(item =>
       React.createElement(Product,{
         key:item.cod, name:item.name, price:item.price, URL:item.URL,
-        quantity:item.quantity, control:item.control, isDelete:this.state.isDelete,
-        isCheckNow:this.state.isCheckNow, cod:item.cod, cbCheckLineTable:this.checkLineTable,
+        quantity:item.quantity, control:item.control, isCheckNow:this.state.isCheckNow,
+        cod:item.cod, cbCheckLineTable:this.checkLineTable,
         cbDeleteLineTable:this.deleteLineTable,     
       }
         )

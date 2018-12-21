@@ -8,7 +8,6 @@ var Product= React.createClass({
     URL: React.PropTypes.string.isRequired,
     quantity: React.PropTypes.number.isRequired,
     control: React.PropTypes.bool,
-    isDelete:React.PropTypes.array,
     cod:React.PropTypes.number.isRequired,
     isCheckNow:React.PropTypes.number,
     cbCheckLineTable:React.PropTypes.func,
@@ -33,11 +32,6 @@ var Product= React.createClass({
 
     var forClassStyle=(this.props.isCheckNow==this.props.cod)?'active_line_in_table'
     :'dont_active_line_in_table';
-    
-
-    if(this.props.isDelete.indexOf(this.props.cod)!=-1){
-      return null;
-    };
     
       return  React.DOM.tbody( {
         className:forClassStyle,
