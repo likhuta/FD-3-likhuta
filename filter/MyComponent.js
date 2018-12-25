@@ -66,7 +66,7 @@ var Block=React.createClass({
       );
 
     return React.DOM.div({},
-      React.DOM.input({type:'checkbox', onClick:this.doSortArrAbc}),
+      React.DOM.input({type:'checkbox', checked:this.state.stayToAbc, onClick:this.doSortArrAbc}),
       React.DOM.input({type:'text', onChange:this.knowSelectStr }),
       React.DOM.div({},answersCode )
       );
