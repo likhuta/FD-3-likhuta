@@ -6,14 +6,14 @@ import './Product.css';
 
 class Product extends React.Component {
 
-  static PropTypes= {
+  static propTypes= {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     URL: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     control: PropTypes.bool,
     cod: PropTypes.number.isRequired,
-    isCheckNow: PropTypes.number.isRequired,
+    isCheckNow: PropTypes.number,
     cbCheckLineTable: PropTypes.func,
     cbDeleteLineTable: PropTypes.func,
   }

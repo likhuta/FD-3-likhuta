@@ -8,7 +8,7 @@ import LineInTable from './LineInTable';
 
 class MyComponent extends React.Component{
 
-  static PropTypes={
+  static propTypes={
     titleOfTable: PropTypes.arrayOf(
       PropTypes.shape({
         name:PropTypes.string.isRequired,

@@ -24212,7 +24212,7 @@ var MyComponent = function (_React$Component) {
   return MyComponent;
 }(_react2.default.Component);
 
-MyComponent.PropTypes = {
+MyComponent.propTypes = {
   titleOfTable: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     name: _propTypes2.default.string.isRequired,
     price: _propTypes2.default.string.isRequired,
@@ -24969,14 +24969,14 @@ var Product = function (_React$Component) {
   return Product;
 }(_react2.default.Component);
 
-Product.PropTypes = {
+Product.propTypes = {
   name: _propTypes2.default.string.isRequired,
   price: _propTypes2.default.number.isRequired,
   URL: _propTypes2.default.string.isRequired,
   quantity: _propTypes2.default.number.isRequired,
   control: _propTypes2.default.bool,
   cod: _propTypes2.default.number.isRequired,
-  isCheckNow: _propTypes2.default.number.isRequired,
+  isCheckNow: _propTypes2.default.number,
   cbCheckLineTable: _propTypes2.default.func,
   cbDeleteLineTable: _propTypes2.default.func
 };
@@ -25075,7 +25075,7 @@ var LineInTable = function (_React$Component) {
   return LineInTable;
 }(_react2.default.Component);
 
-LineInTable.PropTypes = {
+LineInTable.propTypes = {
   titleOfTable: _propTypes2.default.arrayOf(_propTypes2.default.shape({
     name: _propTypes2.default.string.isRequired,
     price: _propTypes2.default.string.isRequired,
