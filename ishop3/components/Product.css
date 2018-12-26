@@ -1,0 +1,8 @@
+.active_line_in_table {
+  background-color: aqua;
+
+}
+.dont_active_line_in_table {
+  background-color:none;
+
+}

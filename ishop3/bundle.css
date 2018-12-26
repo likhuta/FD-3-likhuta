@@ -1,0 +1,20 @@
+table,tr,th,td {
+  border:1px solid black;
+  border-collapse: collapse;
+/*  background-color: aqua;
+*/
+}
+
+body{
+  color: magenta;
+}
+
+.active_line_in_table {
+  background-color: aqua;
+
+}
+.dont_active_line_in_table {
+  background-color:none;
+
+}
+/*# sourceMappingURL=bundle.css.map*/
