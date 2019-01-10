@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -5,6 +6,7 @@ import './MyComponent.css';
 
 import Product from './Product';
 import LineInTable from './LineInTable';
+import FormForProduct from './FormForProduct';
 
 class MyComponent extends React.Component{
 
@@ -34,15 +36,31 @@ class MyComponent extends React.Component{
 
   state ={
 
-    isCheckNow:null,
+    isCheckNow:'22',
     arrToShow:this.props.infoForTable.slice(),
+    workModel: '',
+    infoFormCard:''
 
   }
 
 
   checkLineTable= (cod)=> {
-    this.setState({isCheckNow:cod});
+  // console.log(this.whoCheckByCode(cod))
 
+    this.setState({ isCheckNow:cod,
+                    infoFormCard:this.whoCheckByCode(cod),
+                    workModel:1
+    
+    });
+  }
+
+  whoCheckByCode=(cod)=>{
+    var arrForFormCard=this.state.arrToShow.filter(item=>(cod==item.cod) );   
+    if(arrForFormCard.length==1){
+     // console.log('yes');
+      return arrForFormCard[0];
+    }
+    return 'вернули 2 значения в массиве'
   }
 
   deleteLineTable= (cod) => {
@@ -52,6 +70,15 @@ class MyComponent extends React.Component{
     else{
       return;
     }
+  }
+
+  cnangeFormCard=(cod)=>{
+   // var changeDoNow=this.whoCheckByCode(cod);
+   // console.log('changeDoNow----', changeDoNow );
+    this.setState({ workModel:2,
+                    isCheckNow:cod,
+                    infoFormCard:this.whoCheckByCode(cod)  
+    })
   }
 
   askUser=()=>{
@@ -64,12 +91,17 @@ class MyComponent extends React.Component{
     var answerCode = this.state.arrToShow.map( item=>
       < Product key={item.cod} name={item.name} price={item.price} URL={item.URL}
        quantity={item.quantity} control={item.control} isCheckNow={this.state.isCheckNow}
-       cod={item.cod} cbCheckLineTable={this.checkLineTable} 
-       cbDeleteLineTable={this.deleteLineTable} 
+       cod={item.cod} 
+       cbCheckLineTable={this.checkLineTable} 
+       cbDeleteLineTable={this.deleteLineTable}
+       cbCnangeFormCard={this.cnangeFormCard} 
        />
       
       );
-         
+
+        console.log('my component state--', this.state) 
+
+        
       
     return (
       <div >
@@ -78,7 +110,13 @@ class MyComponent extends React.Component{
           {answerCode}
 
         </table>
-
+        <input type='button' value='New product' />
+        <br/>
+       
+        <FormForProduct infoFormCard={this.state.infoFormCard} 
+        isCheckNow={this.state.isCheckNow}
+        workModel={this.state.workModel}
+        />
       </div>
 
     );

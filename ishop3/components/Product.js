@@ -13,9 +13,13 @@ class Product extends React.Component {
     quantity: PropTypes.number.isRequired,
     control: PropTypes.bool,
     cod: PropTypes.number.isRequired,
-    isCheckNow: PropTypes.number,
+    isCheckNow: PropTypes.any,
     cbCheckLineTable: PropTypes.func,
     cbDeleteLineTable: PropTypes.func,
+  }
+
+  state={
+    
   }
 
   deleteLineTable=(EO)=>{
@@ -27,8 +31,21 @@ class Product extends React.Component {
   checkLineTable=(EO)=>{
     EO.stopPropagation();
     this.props.cbCheckLineTable(this.props.cod);
+    console.log('i am choose')
+    // подсветим
+    
 
   }
+
+  editeLineProduct=(EO)=>{
+    EO.stopPropagation();
+    console.log('do edite')
+    this.props.cbCnangeFormCard(this.props.cod);
+
+  }
+
+ 
+
 
   render(){
 
@@ -40,10 +57,13 @@ class Product extends React.Component {
             <th>{this.props.price}</th>
             <th>{this.props.URL}</th>
             <th>{this.props.quantity}</th>
-            <th onClick={this.deleteLineTable}>
+            <th >
             {(this.props.control)
             ?
-            <input type='button' value='Delete' />
+            <span>
+               <input type='button' value='Edite' onClick={this.editeLineProduct} /> 
+               <input type='button' value='Delete' onClick={this.deleteLineTable} /> 
+            </span>
             :
             <span>{this.props.control}</span>}
 
