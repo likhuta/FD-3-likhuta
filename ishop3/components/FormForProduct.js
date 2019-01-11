@@ -24,13 +24,15 @@ class FormForProduct extends React.Component{
     quantity:this.props.infoFormCard.quantity,
     activeButSave:false,
     whoHaveMistake:[],
+    clickMouse:false
 
   }
 
 
   fixChange=(EO)=>{
     const { id, value } = EO.currentTarget
-    this.setState({[id]:value});
+    this.setState({[id]:value},this.validation());
+  
   }
   makeRemoveLineInTable=()=>{
     const {name, price, URL, quantity, cod }=this.state;
@@ -43,7 +45,10 @@ class FormForProduct extends React.Component{
       control:true,
       cod:cod,
     }
-    this.removePosition(obj);
+   
+      this.removePosition(obj);
+
+    
   }
 
   removePosition=(obj)=>{
@@ -51,18 +56,19 @@ class FormForProduct extends React.Component{
   }
 
 
-  validation=()=>{
+  validation=(param)=>{
     var arr=[];
     const {name, price,URL, quantity}=this.state;
+
     if(!name){
      this.arrWnoHaveMistake(arr,'name')
     }
    
-   if(+price<0 || price==""){
+   if(+price<0 || price==""  || isNaN(+price)==true){
     this.arrWnoHaveMistake(arr,'price')
    }
 
-   if(+quantity<0 || quantity==""){
+   if(+quantity<0 || quantity=="" || isNaN(+quantity)==true){
     this.arrWnoHaveMistake(arr,'quantity')
    }
 
@@ -70,7 +76,11 @@ class FormForProduct extends React.Component{
     this.arrWnoHaveMistake(arr,'URL')
    }
 
-   this.saveButton(arr);
+  this.saveButton(arr,param);
+  }
+  
+  saveFromButton=()=>{
+    this.validation('mouse');
 
   }
 
@@ -79,19 +89,28 @@ class FormForProduct extends React.Component{
   }
  
  
-  saveButton=(arr)=>{
+  saveButton=(arr,param)=>{
     if(arr.length>0){
       this.setState({activeButSave:true, whoHaveMistake:arr} )
     }
-    
-    else{
-      this.setState({activeButSave:false, whoHaveMistake:arr},  this.makeRemoveLineInTable());
+     else{
+      this.setState({activeButSave:false, whoHaveMistake:arr}, ()=>{
+        if(param){
+          this.makeRemoveLineInTable()
+        }
+      }
+        );
     }
+    
+  
    
   }
   doSmth=(EO)=> {
     EO.stopPropagation();
-    this.setState({activeButSave:false})
+    if(this.state.whoHaveMistake.length==0){
+      this.setState({activeButSave:false})
+
+    }
   
   };
 
@@ -103,7 +122,7 @@ class FormForProduct extends React.Component{
   render(){
     const {name, price, URL, quantity, cod, }=this.state;
     const {workModel, isCheckNow}= this.props;
-    
+
     return(
       <div className='FormForProduct_card'>
         <br/>
@@ -169,7 +188,7 @@ class FormForProduct extends React.Component{
                 :null
                 }
                 <br/>
-            <input type='button' value='Save' onClick={this.validation}
+            <input type='button' value='Save' onClick={this.saveFromButton}
              disabled={this.state.activeButSave}/>
             <input type='button' value='Cansel' onClick={this.changeWorkModel}/>
 
