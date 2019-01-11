@@ -16,6 +16,7 @@ class Product extends React.Component {
     isCheckNow: PropTypes.any,
     cbCheckLineTable: PropTypes.func,
     cbDeleteLineTable: PropTypes.func,
+    workModel: PropTypes.any
   }
 
   state={
@@ -24,22 +25,30 @@ class Product extends React.Component {
 
   deleteLineTable=(EO)=>{
     EO.stopPropagation();
+    if(this.props.workModel==2 || this.props.workModel==3 ){
+      return;
+    }
+
     this.props.cbDeleteLineTable(this.props.cod);
 
   }
 
   checkLineTable=(EO)=>{
     EO.stopPropagation();
+    if(this.props.workModel==2 || this.props.workModel==3 ){
+      return;
+    }
     this.props.cbCheckLineTable(this.props.cod);
-    console.log('i am choose')
-    // подсветим
     
 
   }
 
   editeLineProduct=(EO)=>{
     EO.stopPropagation();
-    console.log('do edite')
+    if(this.props.workModel==2 || this.props.workModel==3){
+      return;
+    }
+
     this.props.cbCnangeFormCard(this.props.cod);
 
   }
