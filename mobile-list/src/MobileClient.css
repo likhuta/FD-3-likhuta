@@ -1,0 +1,6 @@
+.active_client{
+  background-color: green;
+}
+.blocked_client {
+  background-color: red;
+}

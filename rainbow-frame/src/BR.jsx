@@ -9,7 +9,7 @@ class BR extends Component {
     let test=[]
     for(let i=0; i<=textArr.length-1; i++){
     if(i) {
-      test.push(<br/>)
+      test.push(<br key={i}/>)
     }
     test.push(textArr[i] );
     }
