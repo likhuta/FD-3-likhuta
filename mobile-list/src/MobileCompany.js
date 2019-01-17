@@ -60,9 +60,6 @@ class MobileCompany extends React.PureComponent {
   }
 
   EOchooseClient=(clientInfo)=>{
- //   console.log('EOchooseClient', clientInfo)
-    // редактировали клиента
-    // показать данные клиента в форме
 
     this.setState({
       workModelFormField:2,
@@ -71,9 +68,6 @@ class MobileCompany extends React.PureComponent {
   }
 
   EOdeleteClient=(id)=>{
-  //  console.log('EOdeleteClient', id)
-    // нажата кнопка удалить клиента из списка по этому id
-    // из state.clients
     let hash=[...this.state.clients];
     hash.forEach((item,i)=>{
       if(item.id===id){
@@ -87,7 +81,6 @@ class MobileCompany extends React.PureComponent {
 
   EOaddClient=()=>{
     channelEvents.emit(this.addClient,)
-    //  показать форму
     this.setState({
       workModelFormField:3,
       iChooseClient:false,

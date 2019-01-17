@@ -23,7 +23,6 @@ class FormField extends React.PureComponent {
 
   saveClient='saveClient';
   addClient='addClient';
- //iChooseClient='iChooseClient';
 
   EOsaveClient=()=>{
     // собрать введенные данные в едино из формы
@@ -37,14 +36,12 @@ class FormField extends React.PureComponent {
       
   
     }
-  // console.log('EOsaveClient in field')
    channelEvents.emit(this.saveClient,newClient)
 
   }
 
   componentWillReceiveProps = (newProps) => {
     this.setState({clientInfo:newProps.iChooseClient});
-    //console.log(newProps.iChooseClient)
   };
 
 
