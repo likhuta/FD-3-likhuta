@@ -15,12 +15,10 @@ class App extends React.PureComponent {
     let companyName='Velcom';
     let clientsArr=[ 
     {id:101, nameClient:'Иван', serNameClient:'Краснов', secondNameClient:'Сергеевич' , balance:200}, 
-    {id:105, nameClient:'Сергей', serNameClient:'Зайцев', secondNameClient:'Владимирович' , balance:250}, 
+   {id:105, nameClient:'Сергей', serNameClient:'Зайцев', secondNameClient:'Владимирович' , balance:250}, 
     {id:1215, nameClient:'Мария', serNameClient:'Иванова', secondNameClient:'Александровна' , balance:-10}, 
-    {id:589, nameClient:'Борис', serNameClient:'Смирнов', secondNameClient:'Геннадьевич' , balance:50}, 
+   {id:589, nameClient:'Борис', serNameClient:'Смирнов', secondNameClient:'Геннадьевич' , balance:50}, 
 
-   // {id:110, fio:"Петров П.П.", balance:180},
-    // {id:120, fio:"Григорьев Г.Г.", balance:220},
     ]; 
 
     return (

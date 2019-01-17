@@ -9,65 +9,74 @@ class FormField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.inputName = React.createRef();
-    this.inputSurName = React.createRef();
+    this.inputSerName = React.createRef();
+    this.inputSecondNameClient = React.createRef();
+    this.inputBalance = React.createRef();
 
   }
 
   state={
-    workModelFormField:1,
+   workModelFormField:this.props.workModelFormField,
     // 1 - форма не отображается
+    clientInfo:this.props.iChooseClient
   }
 
   saveClient='saveClient';
-  EOsaveClient=(EO)=>{
-   console.log('EOsaveClient in field')
-   channelEvents.emit(this.saveClient, 23)
-   this.setNewInputAll()
-
-  }
-
-
-  componentDidMount =()=>{
-    channelEvents.addListener(this.addClient, this.EOaddClient)
-  }
-
-  componentWillMount =()=>{
-    channelEvents.removeListener(this.addClient, this.EOaddClient)
-  }
-
   addClient='addClient';
+ //iChooseClient='iChooseClient';
 
-  EOaddClient=()=>{
-    console.log('EOaddClient in field')
-    // показать форму, чтобы ввести данные нового клиента
+  EOsaveClient=()=>{
+    // собрать введенные данные в едино из формы
+    let abc=(this.state.workModelFormField===3)?Date.now():this.state.clientInfo.id
+      var newClient={
+        id:abc,
+        nameClient:this.inputName.current.value,
+        serNameClient:this.inputSerName.current.value,
+        secondNameClient: this.inputSecondNameClient.current.value,
+        balance:+this.inputBalance.current.value,
+      
+  
+    }
+  // console.log('EOsaveClient in field')
+   channelEvents.emit(this.saveClient,newClient)
+
   }
 
-  setNewInputAll=()=>{
-    console.log( this.inputName.current.value)
-    console.log( this.inputSurName.current.value)
+  componentWillReceiveProps = (newProps) => {
+    this.setState({clientInfo:newProps.iChooseClient});
+    //console.log(newProps.iChooseClient)
+  };
+
+
+  clearForm=()=>{
+    this.inputName.current.value = '';
+    this.inputSerName.current.value='';
+    this.inputSecondNameClient.current.value='';
+    this.inputBalance.current.value=''
 
   }
-
 
   render(){
 
+    const {nameClient ,serNameClient, secondNameClient, balance } = this.state.clientInfo
+    console.log( 'render FormField')
 
     return(
       <div>
-        <span> name </span>
-      <input type={'text'} defaultValue={'name'} ref={this.inputName} /> <br/>
+        <span> Имя </span>
+      <input type={'text'} defaultValue={nameClient} ref={this.inputName} /> <br/>
     
-      <span> surname </span>
-      <input type={'text'} defaultValue={'surname'} ref={this.inputSurName} /> <br/>
+      <span> Фамилия </span>
+      <input type={'text'} defaultValue={serNameClient}  ref={this.inputSerName} /> <br/>
     
-      <span> secondname </span>
-      <input type={'text'} defaultValue={'secondname'}  /> <br/>
+      <span> Отчество </span>
+      <input type={'text'}  defaultValue={secondNameClient} ref={this.inputSecondNameClient} /> <br/>
     
-      <span> balance </span>
-      <input type={'text'} defaultValue={'balance'}  /> <br/>
+      <span> Баланс </span>
+      <input type={'text'}  defaultValue={balance}  ref={this.inputBalance} /> <br/>
      
       <input type='button' value={ 'Сохранить'} onClick={this.EOsaveClient} />
-      <input type='button' value={ 'Отмена'} />
+      <input type='button' value={ 'Отмена'} onClick={this.clearForm} />
 
 
       </div>
