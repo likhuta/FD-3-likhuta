@@ -1,31 +1,43 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-import App from '../src/App';
+//import ReactDOM from 'react-dom';
+import App from './App';
+import MobileCompany from './MobileCompany';
+
+// его нужно установить
 import renderer from 'react-test-renderer';
+import { shallow, mount, render } from 'enzyme';
+import ReactTestUtils from 'react-dom/test-utils';
+
 
 it('renders without crashing', () => {
-
-   // создаём тестовую версию компонента
-   const component = renderer.create(
+  const component = renderer.create(
     <App />
   );
-
- 
-  // получаем снэпшот (HTML-снимок) компонента для сверки, что вёрстка не испортилась
   let componentTree=component.toJSON();
   expect(componentTree).toMatchSnapshot();
+  /*
 
-    // найдём в вёрстке компонента саму кнопку
-    const buttonElem = component.root.find( el => el.props.id==1 /*&& el.props.aaa == 'bbb'*/ ); 
-    // и "нажмём" на неё
-    buttonElem.props.onClick();
-  
-    // получаем уже изменённый снэпшот
-    componentTree=component.toJSON();
-    expect(componentTree).toMatchSnapshot();
-  
+  const buttonElem = component.root.find( el => el.props.id == 2 ); 
+  buttonElem.props.onClick();
 
+  componentTree=component.toJSON();
+  expect(componentTree).toMatchSnapshot();
 
- 
+  ReactTestUtils.Simulate.click(buttonElem,{id:2})
+  */
+
+ const value = 2;
+ const onClick = jest.fn();
+ const wrapper = shallow(
+     <MobileCompany />
+ );
+
+ expect(wrapper).toMatchSnapshot();
+
+ wrapper.find({ id: 2 }).simulate('click', {
+ target: { value },
 });
 
+expect(onClick).toBeCalledWith(value);
+
+});
