@@ -1,60 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
-<div
-  className="out_border"
->
-  <input
-    onClick={[Function]}
-    type="button"
-    value="Velcom"
-  />
-  <input
-    onClick={[Function]}
-    type="button"
-    value="MTS"
-  />
-  <p>
-    Компания 
-    Velcom
-  </p>
-  <hr />
-  <input
-    id={1}
-    onClick={[Function]}
-    type="button"
-    value="Все"
-  />
-  <input
-    id={2}
-    onClick={[Function]}
-    type="button"
-    value="Активные"
-  />
-  <input
-    id={3}
-    onClick={[Function]}
-    type="button"
-    value="Заблокированные"
-  />
-  <hr />
-  <table>
+exports[`Mobile Company Do snapshot with all elemnt  1`] = `
+<table>
+  <MobileClient
+    info={
+      Object {
+        "balance": 200,
+        "id": 101,
+        "nameClient": "Иван",
+        "secondNameClient": "Сергеевич",
+        "serNameClient": "Краснов",
+      }
+    }
+    key="101"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Иван
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Краснов
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Сергеевич
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           200
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -74,22 +58,44 @@ exports[`renders without crashing 1`] = `
         </th>
       </tr>
     </tbody>
+  </MobileClient>
+  <MobileClient
+    info={
+      Object {
+        "balance": 250,
+        "id": 105,
+        "nameClient": "Сергей",
+        "secondNameClient": "Владимирович",
+        "serNameClient": "Зайцев",
+      }
+    }
+    key="105"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Сергей
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Зайцев
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Владимирович
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           250
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -109,22 +115,44 @@ exports[`renders without crashing 1`] = `
         </th>
       </tr>
     </tbody>
+  </MobileClient>
+  <MobileClient
+    info={
+      Object {
+        "balance": -10,
+        "id": 1215,
+        "nameClient": "Мария",
+        "secondNameClient": "Александровна",
+        "serNameClient": "Иванова",
+      }
+    }
+    key="1215"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Мария
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Иванова
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Александровна
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           -10
         </th>
         <th
           className="blocked_client"
+          key="status"
         >
           blocked_client
         </th>
@@ -144,22 +172,44 @@ exports[`renders without crashing 1`] = `
         </th>
       </tr>
     </tbody>
+  </MobileClient>
+  <MobileClient
+    info={
+      Object {
+        "balance": 50,
+        "id": 589,
+        "nameClient": "Борис",
+        "secondNameClient": "Геннадьевич",
+        "serNameClient": "Смирнов",
+      }
+    }
+    key="589"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Борис
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Смирнов
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Геннадьевич
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           50
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -179,188 +229,49 @@ exports[`renders without crashing 1`] = `
         </th>
       </tr>
     </tbody>
-  </table>
-  <input
-    onClick={[Function]}
-    type="button"
-    value="Добавить клиента"
-  />
-  <br />
-  <br />
-</div>
+  </MobileClient>
+</table>
 `;
 
-exports[`renders without crashing 2`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <App />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "clients": Array [
-        Object {
-          "balance": 200,
-          "id": 101,
-          "nameClient": "Иван",
-          "secondNameClient": "Сергеевич",
-          "serNameClient": "Краснов",
-        },
-        Object {
-          "balance": 250,
-          "id": 105,
-          "nameClient": "Сергей",
-          "secondNameClient": "Владимирович",
-          "serNameClient": "Зайцев",
-        },
-        Object {
-          "balance": -10,
-          "id": 1215,
-          "nameClient": "Мария",
-          "secondNameClient": "Александровна",
-          "serNameClient": "Иванова",
-        },
-        Object {
-          "balance": 50,
-          "id": 589,
-          "nameClient": "Борис",
-          "secondNameClient": "Геннадьевич",
-          "serNameClient": "Смирнов",
-        },
-      ],
-      "name": "Velcom",
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "clients": Array [
-          Object {
-            "balance": 200,
-            "id": 101,
-            "nameClient": "Иван",
-            "secondNameClient": "Сергеевич",
-            "serNameClient": "Краснов",
-          },
-          Object {
-            "balance": 250,
-            "id": 105,
-            "nameClient": "Сергей",
-            "secondNameClient": "Владимирович",
-            "serNameClient": "Зайцев",
-          },
-          Object {
-            "balance": -10,
-            "id": 1215,
-            "nameClient": "Мария",
-            "secondNameClient": "Александровна",
-            "serNameClient": "Иванова",
-          },
-          Object {
-            "balance": 50,
-            "id": 589,
-            "nameClient": "Борис",
-            "secondNameClient": "Геннадьевич",
-            "serNameClient": "Смирнов",
-          },
-        ],
-        "name": "Velcom",
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
-`;
-
-exports[`renders without crashing 3`] = `
-<div
-  className="out_border"
->
-  <input
-    onClick={[Function]}
-    type="button"
-    value="Velcom"
-  />
-  <input
-    onClick={[Function]}
-    type="button"
-    value="MTS"
-  />
-  <p>
-    Компания 
-    Velcom
-  </p>
-  <hr />
-  <input
-    id={1}
-    onClick={[Function]}
-    type="button"
-    value="Все"
-  />
-  <input
-    id={2}
-    onClick={[Function]}
-    type="button"
-    value="Активные"
-  />
-  <input
-    id={3}
-    onClick={[Function]}
-    type="button"
-    value="Заблокированные"
-  />
-  <hr />
-  <table>
+exports[`Mobile Company check input 'Активные '  1`] = `
+<table>
+  <MobileClient
+    info={
+      Object {
+        "balance": 200,
+        "id": 101,
+        "nameClient": "Иван",
+        "secondNameClient": "Сергеевич",
+        "serNameClient": "Краснов",
+      }
+    }
+    key="101"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Иван
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Краснов
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Сергеевич
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           200
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -380,22 +291,44 @@ exports[`renders without crashing 3`] = `
         </th>
       </tr>
     </tbody>
+  </MobileClient>
+  <MobileClient
+    info={
+      Object {
+        "balance": 250,
+        "id": 105,
+        "nameClient": "Сергей",
+        "secondNameClient": "Владимирович",
+        "serNameClient": "Зайцев",
+      }
+    }
+    key="105"
+  >
     <tbody>
       <tr>
-        <th>
+        <th
+          key="nameClient"
+        >
           Сергей
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Зайцев
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Владимирович
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           250
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -415,57 +348,44 @@ exports[`renders without crashing 3`] = `
         </th>
       </tr>
     </tbody>
+  </MobileClient>
+  <MobileClient
+    info={
+      Object {
+        "balance": 50,
+        "id": 589,
+        "nameClient": "Борис",
+        "secondNameClient": "Геннадьевич",
+        "serNameClient": "Смирнов",
+      }
+    }
+    key="589"
+  >
     <tbody>
       <tr>
-        <th>
-          Мария
-        </th>
-        <th>
-          Иванова
-        </th>
-        <th>
-          Александровна
-        </th>
-        <th>
-          -10
-        </th>
         <th
-          className="blocked_client"
+          key="nameClient"
         >
-          blocked_client
-        </th>
-        <th>
-          <input
-            onClick={[Function]}
-            type="button"
-            value="Редактировть"
-          />
-        </th>
-        <th>
-          <input
-            onClick={[Function]}
-            type="button"
-            value="Удалить"
-          />
-        </th>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <th>
           Борис
         </th>
-        <th>
+        <th
+          key="serNameClient"
+        >
           Смирнов
         </th>
-        <th>
+        <th
+          key="secondNameClient"
+        >
           Геннадьевич
         </th>
-        <th>
+        <th
+          key="balance"
+        >
           50
         </th>
         <th
           className="active_client"
+          key="status"
         >
           active_client
         </th>
@@ -485,13 +405,127 @@ exports[`renders without crashing 3`] = `
         </th>
       </tr>
     </tbody>
-  </table>
-  <input
-    onClick={[Function]}
-    type="button"
-    value="Добавить клиента"
-  />
-  <br />
-  <br />
-</div>
+  </MobileClient>
+</table>
+`;
+
+exports[`Test MobileClient MobileClient with render  1`] = `
+<tbody>
+  <tr>
+    <th>
+      Борис
+    </th>
+    <th>
+      Смирнов
+    </th>
+    <th>
+      Геннадьевич
+    </th>
+    <th>
+      50
+    </th>
+    <th
+      class="active_client"
+    >
+      active_client
+    </th>
+    <th>
+      <input
+        type="button"
+        value="Редактировть"
+      />
+    </th>
+    <th>
+      <input
+        type="button"
+        value="Удалить"
+      />
+    </th>
+  </tr>
+</tbody>
+`;
+
+exports[`Test MobileClient MobileClient with renderer.create  1`] = `
+<tbody>
+  <tr>
+    <th>
+      Борис
+    </th>
+    <th>
+      Смирнов
+    </th>
+    <th>
+      Геннадьевич
+    </th>
+    <th>
+      50
+    </th>
+    <th
+      className="active_client"
+    >
+      active_client
+    </th>
+    <th>
+      <input
+        onClick={[Function]}
+        type="button"
+        value="Редактировть"
+      />
+    </th>
+    <th>
+      <input
+        onClick={[Function]}
+        type="button"
+        value="Удалить"
+      />
+    </th>
+  </tr>
+</tbody>
+`;
+
+exports[`Test MobileClient with shallow 1`] = `
+<tbody>
+  <tr>
+    <th
+      key="nameClient"
+    >
+      Борис
+    </th>
+    <th
+      key="serNameClient"
+    >
+      Смирнов
+    </th>
+    <th
+      key="secondNameClient"
+    >
+      Геннадьевич
+    </th>
+    <th
+      key="balance"
+    >
+      50
+    </th>
+    <th
+      className="active_client"
+      key="status"
+    >
+      active_client
+    </th>
+    <th>
+      <input
+        onClick={[Function]}
+        type="button"
+        value="Редактировть"
+      />
+    </th>
+    <th>
+      <input
+        onClick={[Function]}
+        type="button"
+        value="Удалить"
+      />
+    </th>
+  </tr>
+</tbody>
 `;

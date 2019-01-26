@@ -1,43 +1,86 @@
 import React from 'react';
-//import ReactDOM from 'react-dom';
-import App from './App';
+import MobileClient from './MobileClient';
 import MobileCompany from './MobileCompany';
 
-// его нужно установить
+
 import renderer from 'react-test-renderer';
 import { shallow, mount, render } from 'enzyme';
-import ReactTestUtils from 'react-dom/test-utils';
+import toJson from 'enzyme-to-json'
 
 
-it('renders without crashing', () => {
-  const component = renderer.create(
-    <App />
-  );
-  let componentTree=component.toJSON();
-  expect(componentTree).toMatchSnapshot();
-  /*
 
-  const buttonElem = component.root.find( el => el.props.id == 2 ); 
-  buttonElem.props.onClick();
+   describe('Test MobileClient', () => { 
+    let client= 
+     {id:589, nameClient:'Борис', serNameClient:'Смирнов', secondNameClient:'Геннадьевич' , balance:50}; 
 
-  componentTree=component.toJSON();
-  expect(componentTree).toMatchSnapshot();
+      it('with shallow', () => {
+        let mobileClient = shallow(<MobileClient  key={client.id} info={client} />)
+        expect(toJson(mobileClient)).toMatchSnapshot();
 
-  ReactTestUtils.Simulate.click(buttonElem,{id:2})
-  */
+      })
 
- const value = 2;
- const onClick = jest.fn();
- const wrapper = shallow(
-     <MobileCompany />
- );
 
- expect(wrapper).toMatchSnapshot();
 
- wrapper.find({ id: 2 }).simulate('click', {
- target: { value },
-});
+      it('MobileClient with renderer.create ',()=>{
+        let wrapper=renderer.create(<MobileClient  key={client.id} info={client}/> )
+        let tree = wrapper.toJSON();
+        expect(tree).toMatchSnapshot();
+      })
 
-expect(onClick).toBeCalledWith(value);
+      it('MobileClient with render ',()=>{
+        let wrapper=render(<MobileClient  key={client.id} info={client}/> )
+        expect(toJson(wrapper)).toMatchSnapshot();
+      })
 
-});
+    
+  })
+
+  describe('Mobile Company', () => { 
+      let companyName='Velcom';
+      let clientsArr=[ 
+      {id:101, nameClient:'Иван', serNameClient:'Краснов', secondNameClient:'Сергеевич' , balance:200}, 
+      {id:105, nameClient:'Сергей', serNameClient:'Зайцев', secondNameClient:'Владимирович' , balance:250}, 
+      {id:1215, nameClient:'Мария', serNameClient:'Иванова', secondNameClient:'Александровна' , balance:-10}, 
+      {id:589, nameClient:'Борис', serNameClient:'Смирнов', secondNameClient:'Геннадьевич' , balance:50}, 
+
+      ]; 
+
+      let wrapper=mount(<MobileCompany   name={companyName} clients={clientsArr}/> )
+
+        it('Do snapshot with all elemnt ', ()=>{
+        expect(toJson(wrapper.find('table'))).toMatchSnapshot();
+
+        })
+
+       
+
+        it('check input \'Активные \' ', ()=>{
+          // найдем кнопку
+          let buttonActive=wrapper.find({ value: 'Активные'});
+
+          // нажмем
+          buttonActive.simulate("click", { target: { id: 2 }})
+
+          // передалось ли значение 2 - для режиа активых клиентов
+          expect(wrapper.state().workModelSort).toEqual(2);
+
+          // вывод только положительных
+          expect(toJson(wrapper.find('table'))).toMatchSnapshot();
+
+          // проверим положительный ли у них баланс
+           wrapper.find({ key:'balance'}).forEach((node) => {
+             expect(node.text()).toBeGreaterThan(0);
+           });
+        })
+
+        it('check input MTS ', ()=>{
+          let buttonActive=wrapper.find({ value:'MTS'});
+          buttonActive.simulate("click", { target: { value: 'MTS' }})
+          expect(wrapper.find('p').first().text()).toEqual('Компания MTS')
+        })
+
+
+    
+  })
+
+
