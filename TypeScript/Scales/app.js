@@ -14,21 +14,21 @@ var __extends = (this && this.__extends) || (function () {
 var Scales = /** @class */ (function () {
     function Scales() {
         var _this = this;
-        this.listProductWeight = [];
-        this.listProduct = [];
-        this.add = function (_product) {
-            (_this.listProductWeight).push(_product.weight);
-            (_this.listProduct).push(_product.nameProduct);
-        };
-        this.sumScale = function () {
-            return (_this.listProductWeight).reduce(function (sum, current) { return sum + current; });
+        this.allProduct = [];
+        this.add = function (product) {
+            (_this.allProduct).push(product);
         };
         this.getSumScale = function () {
-            var allWeight = _this.sumScale();
-            console.log('Общий веспродуктов: ', allWeight);
+            var totalWeight = 0;
+            (_this.allProduct).forEach(function (item) { return totalWeight += item.weight; });
+            console.log('Общий веспродуктов: ', totalWeight);
         };
         this.getNameList = function () {
-            console.log(_this.listProduct);
+            var totalList = [];
+            _this.allProduct.forEach(function (item) {
+                totalList.push(item.nameProduct);
+            });
+            console.log(totalList);
         };
     }
     ;

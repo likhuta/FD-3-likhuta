@@ -1,29 +1,31 @@
 
 class Scales  {
 
-   listProductWeight:Array <number>=[];
-   listProduct:Array <string>=[];
+   allProduct:Array <any>=[]
 
     constructor(){
     };
 
-   add=(_product:Apple):void=>{
-    
-    (this.listProductWeight).push(_product.weight);
-    (this.listProduct).push(_product.nameProduct)
+   add=(product:Apple):void=>{
+     (this.allProduct).push(product);
   }
 
-  sumScale=():number=>{
-    return    (this.listProductWeight).reduce((sum, current)=>sum+current)
 
-  }
   getSumScale=():void=>{
-    let allWeight:number=this.sumScale();
-    console.log('Общий веспродуктов: ', allWeight)
-  }
+   let totalWeight:number=0;
+   (this.allProduct).forEach((item)=>totalWeight+=item.weight);
+
+    console.log('Общий веспродуктов: ', totalWeight)
+    }
 
   getNameList=():void=>{
-    console.log( this.listProduct)
+    let totalList:Array <string>=[];
+    this.allProduct.forEach(item=>{
+    totalList.push(item.nameProduct);
+
+  })
+    console.log(totalList)
+ 
   }
 
 }
@@ -76,6 +78,7 @@ class Tomato extends Product{
 let apple1:Apple= new Apple('Антоновка', 250);
 let apple2:Apple= new Apple('Семеновка', 560);
 let tomato1:Tomato=new Tomato ('Синьерро-помидорро', 150);
+
 
 
 let scales1:Scales= new Scales();
