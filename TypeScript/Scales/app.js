@@ -20,7 +20,7 @@ var Scales = /** @class */ (function () {
         };
         this.getSumScale = function () {
             var totalWeight = 0;
-            (_this.allProduct).forEach(function (item) { return totalWeight += item.weight; });
+            (_this.allProduct).forEach(function (item) { return totalWeight += item.getScale(); });
             console.log('Общий веспродуктов: ', totalWeight);
         };
         this.getNameList = function () {
@@ -35,34 +35,30 @@ var Scales = /** @class */ (function () {
     return Scales;
 }());
 var Product = /** @class */ (function () {
-    function Product() {
+    function Product(_nameProduct, _weight) {
         var _this = this;
-        this.getScale = function (_weight) {
-            console.log(_this.weight);
+        this.getScale = function () {
+            return _this.weight;
         };
         this.getName = function (_nameProduct) {
             console.log(_this.nameProduct);
         };
+        this.nameProduct = _nameProduct;
+        this.weight = _weight;
     }
     return Product;
 }());
 var Apple = /** @class */ (function (_super) {
     __extends(Apple, _super);
     function Apple(_nameProduct, _weight) {
-        var _this = _super.call(this) || this;
-        _this.nameProduct = _nameProduct;
-        _this.weight = _weight;
-        return _this;
+        return _super.call(this, _nameProduct, _weight) || this;
     }
     return Apple;
 }(Product));
 var Tomato = /** @class */ (function (_super) {
     __extends(Tomato, _super);
     function Tomato(_nameProduct, _weight) {
-        var _this = _super.call(this) || this;
-        _this.nameProduct = _nameProduct;
-        _this.weight = _weight;
-        return _this;
+        return _super.call(this, _nameProduct, _weight) || this;
     }
     return Tomato;
 }(Product));

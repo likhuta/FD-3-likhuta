@@ -1,7 +1,7 @@
 
 class Scales  {
 
-   allProduct:Array <any>=[]
+   allProduct:Array <Product>=[]
 
     constructor(){
     };
@@ -13,7 +13,7 @@ class Scales  {
 
   getSumScale=():void=>{
    let totalWeight:number=0;
-   (this.allProduct).forEach((item)=>totalWeight+=item.weight);
+   (this.allProduct).forEach((item)=>totalWeight+=item.getScale());
 
     console.log('Общий веспродуктов: ', totalWeight)
     }
@@ -27,7 +27,6 @@ class Scales  {
     console.log(totalList)
  
   }
-
 }
 
 
@@ -35,13 +34,14 @@ class Scales  {
 class Product {
 
   nameProduct:string;
-  weight:number;
+ private weight:number;
 
-  constructor(){
-
+  constructor(_nameProduct:string, _weight:number){
+  this.nameProduct=_nameProduct;
+   this.weight=_weight;
   }
-  getScale=(_weight:number):void=>{
-    console.log(this.weight);
+  getScale=():number=>{
+   return this.weight
   }
 
   getName=(_nameProduct:string):void=>{
@@ -51,26 +51,16 @@ class Product {
 }
 
 class Apple  extends Product{
-
-  nameProduct:string;
-  weight:number;
-
-  constructor( _nameProduct:string, _weight:number) {
-    super();
-    this.nameProduct=_nameProduct;
-    this.weight=_weight;
+    constructor(_nameProduct:string, _weight:number ) {
+    super(_nameProduct, _weight);
 
   }
 }
 
 class Tomato extends Product{
-  nameProduct:string;
-  weight:number;
-
-  constructor( _nameProduct:string, _weight:number) {
-    super();
-    this.nameProduct=_nameProduct;
-    this.weight=_weight;
+  
+   constructor(_nameProduct:string, _weight:number ) {
+    super(_nameProduct, _weight);
   }
 
 }
