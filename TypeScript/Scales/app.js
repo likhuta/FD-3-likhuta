@@ -21,30 +21,30 @@ var Scales = /** @class */ (function () {
         this.getSumScale = function () {
             var totalWeight = 0;
             (_this.allProduct).forEach(function (item) { return totalWeight += item.getScale(); });
-            console.log('Общий веспродуктов: ', totalWeight);
+            return totalWeight;
         };
         this.getNameList = function () {
             var totalList = [];
             _this.allProduct.forEach(function (item) {
-                totalList.push(item.nameProduct);
+                totalList.push(item.getName());
             });
-            console.log(totalList);
+            return totalList;
         };
     }
     ;
     return Scales;
 }());
 var Product = /** @class */ (function () {
-    function Product(_nameProduct, _weight) {
+    function Product(nameProduct, weight) {
         var _this = this;
+        this.nameProduct = nameProduct;
+        this.weight = weight;
         this.getScale = function () {
             return _this.weight;
         };
-        this.getName = function (_nameProduct) {
-            console.log(_this.nameProduct);
+        this.getName = function () {
+            return _this.nameProduct;
         };
-        this.nameProduct = _nameProduct;
-        this.weight = _weight;
     }
     return Product;
 }());
@@ -69,5 +69,5 @@ var scales1 = new Scales();
 scales1.add(apple1);
 scales1.add(apple2);
 scales1.add(tomato1);
-scales1.getSumScale();
-scales1.getNameList();
+console.log(scales1.getNameList());
+console.log('Общий веспродуктов: ', scales1.getSumScale());
