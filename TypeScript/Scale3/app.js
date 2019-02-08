@@ -1,8 +1,17 @@
+function uniFactory(classRef) {
+    return new classRef();
+}
 var Scales = /** @class */ (function () {
-    function Scales() {
-        this.allProduct = [];
+    function Scales(_newClass) {
+        // console.log(_newClass)
+        this.newClass = _newClass;
+        console.log(this.newClass);
     }
     ;
+    Scales.prototype.getSumScale = function () {
+    };
+    Scales.prototype.getNameList = function () {
+    };
     return Scales;
 }());
 var Product = /** @class */ (function () {
@@ -38,20 +47,10 @@ var ScalesStorageEngineArray = /** @class */ (function () {
     };
     return ScalesStorageEngineArray;
 }());
-/*
-let scale1= new Scales <ScalesStorageEngineArray>();
-let product1:Product= new Product();
-
-scale1.addItem(product1)
-
-
-
-let scaleArr1=new ScalesStorageEngineArray();
-scaleArr1.addItem(product1);
-
-console.log(scaleArr1.getCount())
-
-*/
+var typeScale1 = new ScalesStorageEngineArray();
+var scale1 = new Scales(typeScale1);
+console.dir(scale1);
+var product1 = new Product();
 var ScalesStorageEngineLocalStorage = /** @class */ (function () {
     function ScalesStorageEngineLocalStorage() {
         this.count = 0;
@@ -69,7 +68,3 @@ var ScalesStorageEngineLocalStorage = /** @class */ (function () {
     };
     return ScalesStorageEngineLocalStorage;
 }());
-var product2 = new Product();
-var scaleArr2 = new ScalesStorageEngineLocalStorage();
-scaleArr2.addItem(product2);
-console.log(scaleArr2.getCount());
