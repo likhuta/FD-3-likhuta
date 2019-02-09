@@ -71,17 +71,17 @@ var ScalesStorageEngineLocalStorage = /** @class */ (function () {
         return this.count;
     };
     ScalesStorageEngineLocalStorage.prototype.getItem = function (index) {
-        var aaa = JSON.parse(localStorage[index]);
-        var key;
-        for (key in this.item) {
-            if (key in aaa) {
-            }
-            else {
-                aaa[key] = this.item[key];
-            }
-        }
-        // return this.item
-        return aaa;
+        var lsProd = JSON.parse(localStorage[index]);
+        lsProd.__proto__ = new Product;
+        //  способ ниже не работает
+        //   lsProd.__proto__=Object.create(Product.prototype)
+        // и этот тоже
+        // lsProd.__proto__=Product.prototype;
+        // только при явном создание объекта class Product
+        //  console.log( Object.create(Product.prototype) )
+        //  console.log(Product.prototype )
+        // console.log( lsProd)
+        return lsProd;
     };
     ScalesStorageEngineLocalStorage.prototype.getCount = function () {
         return localStorage.length;

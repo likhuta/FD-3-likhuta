@@ -93,17 +93,18 @@
       return this.count
     }
     getItem(index:number):Product{
-      let aaa:Product=JSON.parse(localStorage[index])
-      let key:string
-      for( key in this.item){
-        if( key in aaa){
-        }
-        else{
-          aaa[key]=this.item[key]
-        }
-      }
-     // return this.item
-      return aaa
+      let lsProd:Product=JSON.parse(localStorage[index]);
+      lsProd.__proto__=new Product;
+//  способ ниже не работает
+ //   lsProd.__proto__=Object.create(Product.prototype)
+ // и этот тоже
+    // lsProd.__proto__=Product.prototype;
+// только при явном создание объекта class Product
+  //  console.log( Object.create(Product.prototype) )
+  //  console.log(Product.prototype )
+
+  // console.log( lsProd)
+      return lsProd;
       }
 
       
