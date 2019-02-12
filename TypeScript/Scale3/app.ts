@@ -94,7 +94,9 @@
     }
     getItem(index:number):Product{
       let lsProd:Product=JSON.parse(localStorage[index]);
-      lsProd.__proto__=new Product;
+
+      // раскомментить нижнюю строку
+    //  lsProd.__proto__=new Product;
 //  способ ниже не работает
  //   lsProd.__proto__=Object.create(Product.prototype)
  // и этот тоже
